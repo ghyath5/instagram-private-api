@@ -10,7 +10,7 @@ export class AccountFollowersFeed extends Feed<AccountFollowersFeedResponse, Acc
   order?: 'default' = 'default';
   query = '';
   enableGroups = true;
-
+  count:number = 20000;
   id: number | string;
   @Expose()
   public nextMaxId: string;
@@ -18,6 +18,7 @@ export class AccountFollowersFeed extends Feed<AccountFollowersFeedResponse, Acc
   set state(body: AccountFollowersFeedResponse) {
     this.moreAvailable = !!body.next_max_id;
     this.nextMaxId = body.next_max_id;
+    this.count = body.count;
   }
 
   async request() {
@@ -29,6 +30,7 @@ export class AccountFollowersFeed extends Feed<AccountFollowersFeedResponse, Acc
         order: this.order,
         query: this.query,
         enable_groups: this.enableGroups,
+        count: this.count
       },
     });
     this.state = body;
