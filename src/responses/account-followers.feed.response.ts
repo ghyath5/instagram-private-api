@@ -7,6 +7,7 @@ export interface AccountFollowersFeedResponse {
   next_max_id: string;
   page_size: number;
   status: string;
+  count: number;
 }
 export class AccountFollowersFeedResponseUsersItem extends ProfileEntity {
   pk: number;
