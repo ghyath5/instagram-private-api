@@ -8,7 +8,7 @@ export class AccountFollowingFeed extends Feed<AccountFollowingFeedResponse, Acc
   query = '';
   enableGroups = true;
   includesHashtags = true;
-
+  count:number = 20000;
   id: number | string;
   @Expose()
   public nextMaxId: string;
@@ -16,6 +16,7 @@ export class AccountFollowingFeed extends Feed<AccountFollowingFeedResponse, Acc
   set state(body: AccountFollowingFeedResponse) {
     this.moreAvailable = !!body.next_max_id;
     this.nextMaxId = body.next_max_id;
+    this.count = body.count;
   }
 
   async request() {
@@ -27,6 +28,7 @@ export class AccountFollowingFeed extends Feed<AccountFollowingFeedResponse, Acc
         search_surface: this.searchSurface,
         order: this.order,
         query: this.query,
+        count: this.count,
         enable_groups: this.enableGroups,
         includes_hashtags: this.includesHashtags,
       },
