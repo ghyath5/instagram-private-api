@@ -8,7 +8,7 @@ export class AccountFollowingFeed extends Feed<AccountFollowingFeedResponse, Acc
   query = '';
   enableGroups = true;
   includesHashtags = true;
-  count:number = 20000;
+  count:number = 90000;
   id: number | string;
   @Expose()
   public nextMaxId: string;
