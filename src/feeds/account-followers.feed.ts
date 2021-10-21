@@ -10,7 +10,7 @@ export class AccountFollowersFeed extends Feed<AccountFollowersFeedResponse, Acc
   order?: 'default' = 'default';
   query = '';
   enableGroups = true;
-  count:number = 20000;
+  count:number = 90000;
   id: number | string;
   @Expose()
   public nextMaxId: string;
